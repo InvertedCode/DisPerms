@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: StaticDatabase.js</title>
+    <title>JSDoc: Source: enum/HASDBCODE.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: StaticDatabase.js</h1>
+    <h1 class="page-title">Source: enum/HASDBCODE.js</h1>
 
     
 
@@ -27,34 +27,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A static {@link PermissionManagerGuild} used for saving it.
+ * These are the possible return values from {@link PermissionManager.hasDatabase}.
+ * @enum {number}
+ * @readonly
+ * @since 3.0.0
  */
-class StaticDatabase {
+const HASDBCODE = {
   /**
-   * @constructor
-   * @param {PermissionManagerGuild} [db]
+   * The database is actively loaded into memory
    */
-  constructor(db) {
-    this.guild = db.guild;
-    /**
-     * A collection of roles
-     * @type {Map&lt;String, PermissionManagerRole>}
-     */
-    this.roles = db.roles;
-    /**
-     * A little list of role ID's in order by position in the guild settings
-     * @type {String[]}
-     */
-    this.friendlyRoleIndex = db.friendlyRoleIndex;
-
-    /**
-     * The permissions and roles that have them
-     */
-    this.perms = db.perms;
-  }
+  "DB_ACTIVE": 0,
+  /**
+   * The database exists, but is not loaded
+   */
+  "DB_EXISTS": 1,
+  /**
+   * The database is less real than Discord API V7
+   */
+  "DB_NODB":   2
 }
 
-module.exports = StaticDatabase</code></pre>
+module.exports = HASDBCODE;</code></pre>
         </article>
     </section>
 

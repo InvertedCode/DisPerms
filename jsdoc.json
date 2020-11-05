@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["src","src/util"]
+    "include": ["src","src/util", "src/enum"]
   },
   "opts": {
     "destination": "./docs/"
