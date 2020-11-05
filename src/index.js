@@ -1,5 +1,5 @@
 module.exports = {
-  ENUM: require('./enum/enum-index.js'),
+  HASDBCODE: require('./enum/HASDBCODE.js'),
   PermissionManager: require('./PermissionManager.js'),
   PermissionManagerGuild: require('./PermissionManagerGuild.js'),
   PermissionManagerRole: require('./PermissionManagerRole.js'),

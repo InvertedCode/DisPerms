@@ -13,9 +13,9 @@ class PermissionManager {
    * Initalize a PermissionManager
    * @param {Discord.Client} clientapp The Discord.js client object
    * @param {Object} [options] A little group of settings
-   * @param {String} [options.dbdir] The directory where databases are stored
-   * @param {Boolean} [options.hasTimeout] IF the database has a timeout
-   * @param {Integer} [options.dbtimeout] the timeout used if hasTimeout is true
+   * @param {String} [options.dbdir='./pdatabase/'] The directory where databases are stored
+   * @param {Boolean} [options.hasTimeout=true] IF the database has a timeout
+   * @param {Integer} [options.dbtimeout=100000] the timeout used if hasTimeout is true
    */
   constructor(clientapp, options = {}) {
     /**
@@ -26,6 +26,7 @@ class PermissionManager {
     /**
      * the location the manager saves the permission databases
      * @type {String}
+     * @default './pdatabase/'
      */  
     this.databasePath = options.dbdir ?? './pdatabase/';
 
@@ -38,12 +39,14 @@ class PermissionManager {
     /**
      * Wether databases time out or not
      * @type {Boolean}
+     * @default true
      */
     this.databasesDie = options.hasTimeout ?? true;
     
     /**
      * The timeout for the databases
      * @type {Integer}
+     * @default 100000
      */
     this.databasetimeout = options.dbtimeout ?? 100000;
     
@@ -110,6 +113,9 @@ class PermissionManager {
     return this.databases[guild.id];
   }
 
+  /**
+   * @listen PermissionManagerGuild#die
+   */
   _hookToDie(a) {
     a.signals.on('die', () => {
       console.log(`database ${a.guild} timed out`)

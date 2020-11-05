@@ -1,7 +1,6 @@
 /**
  * These are the possible return values from {@link PermissionManager.hasDatabase}.
- * @enum {number}
- * @readonly
+ * @typedef {Number}
  * @since 3.0.0
  */
 const HASDBCODE = {

@@ -43,9 +43,16 @@ class PermissionManagerGuild {
         this.friendlyRoleIndex[v.position] = k;
       };
 
+      /**
+       * Wether the database times out or not
+       * @type {Boolean}
+       */
       this.dies = false;
       if (timeout) {
         this.dies = true;
+        /**
+         * The timeout fot the database
+         */
         this.timeout = timeout;
         this._startTimeout();
       }
@@ -55,7 +62,6 @@ class PermissionManagerGuild {
     /**
      * Only sends the Die signal to it's {@link PermissionManager}
      * @type {EventEmitter}
-     * @event Die
      */
     this.signals = new EventEmitter();
   }
@@ -119,11 +125,19 @@ class PermissionManagerGuild {
   /**
    * Die
    * @private
+   * @fires PermissionManagerGuild#Die
    */
   die() {
+    /**
+     * @event PermissionManagerGuild#Die
+     * 
+     */
     this.signals.emit('die');
   }
 
+  /** Converts the database to a {@link StaticDatabase} then returns it
+   * @returns {String}
+   */
   toJSON() {
     let a = new StaticDb(this);
     let b = JSON.stringify(a);
