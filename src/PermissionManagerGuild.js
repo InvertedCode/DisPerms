@@ -11,8 +11,8 @@ const wait = util.promisify(setTimeout);
 class PermissionManagerGuild {
   /**
    * @constructor
-   * @param {Discord.Guild} [guild]
-   * @param {Integer} [timeout]0
+   * @param {Discord.Guild} guild
+   * @param {Integer} timeout
    */
   constructor(guild, timeout = null) {
     if (guild) {
@@ -55,13 +55,14 @@ class PermissionManagerGuild {
     /**
      * Only sends the Die signal to it's {@link PermissionManager}
      * @type {EventEmitter}
+     * @event Die
      */
     this.signals = new EventEmitter();
   }
 
   /**
    * Sets the timeout for the database
-   * @param {Integer} [timeout]
+   * @param {Integer} timeout
    */
   setTimeout(timeout) {
     this.timeout = timeout;
@@ -85,9 +86,9 @@ class PermissionManagerGuild {
   }
   /**
    * Set a permission to a specific value for a role
-   * @param {Discord.Role | Discord.Snowflake | String} [role]
-   * @param {String} [perm]
-   * @param {Boolean} [value=true]
+   * @param {(Discord.Role | Discord.Snowflake | String)} role
+   * @param {String} perm
+   * @param {Boolean} value
    */
   setPermission(role, perm, value = true) {
     var r = '0';
@@ -106,8 +107,8 @@ class PermissionManagerGuild {
 
   /**
    * Gets a permission for a member
-   * @param {Discord.GuildMember} [member]
-   * @param {String} [perm]
+   * @param {Discord.GuildMember} member
+   * @param {String} perm
    * @returns {Boolean}
    */
   getPermission(member, perm) {

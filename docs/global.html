@@ -281,7 +281,7 @@
     
 
     
-    <h4 class="name" id="load"><span class="type-signature"></span>load<span class="signature">(file<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="PermissionManagerGuild.html">PermissionManagerGuild</a>>}</span></h4>
+    <h4 class="name" id="load"><span class="type-signature"></span>load<span class="signature">(file)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="PermissionManagerGuild.html">PermissionManagerGuild</a>>}</span></h4>
     
 
     
@@ -313,8 +313,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -339,16 +337,6 @@
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -448,7 +436,7 @@
     
 
     
-    <h4 class="name" id="loadSync"><span class="type-signature"></span>loadSync<span class="signature">(file<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="PermissionManagerGuild.html">PermissionManagerGuild</a>}</span></h4>
+    <h4 class="name" id="loadSync"><span class="type-signature"></span>loadSync<span class="signature">(file)</span><span class="type-signature"> &rarr; {<a href="PermissionManagerGuild.html">PermissionManagerGuild</a>}</span></h4>
     
 
     
@@ -480,8 +468,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -506,16 +492,6 @@
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -615,7 +591,7 @@
     
 
     
-    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">(db<span class="signature-attributes">opt</span>, file<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">(db, file)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
@@ -647,8 +623,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -674,16 +648,6 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
@@ -706,16 +670,6 @@
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -815,7 +769,7 @@
     
 
     
-    <h4 class="name" id="saveSync"><span class="type-signature"></span>saveSync<span class="signature">(db<span class="signature-attributes">opt</span>, file<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="saveSync"><span class="type-signature"></span>saveSync<span class="signature">(db, file)</span><span class="type-signature"></span></h4>
     
 
     
@@ -847,8 +801,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -874,16 +826,6 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
@@ -906,16 +848,6 @@
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -997,6 +929,108 @@
     
 
     
+        <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="event:Die">Die</h4>
+    
+
+    
+
+
+
+<div class="description">
+    Only sends the Die signal to it's <a href="PermissionManager.html">PermissionManager</a>
+</div>
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">EventEmitter</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 </article>
 
 </section>
@@ -1007,13 +1041,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PermissionManager.html">PermissionManager</a></li><li><a href="PermissionManagerGuild.html">PermissionManagerGuild</a></li><li><a href="PermissionManagerRole.html">PermissionManagerRole</a></li><li><a href="StaticDatabase.html">StaticDatabase</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HASDBCODE">HASDBCODE</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadSync">loadSync</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#saveSync">saveSync</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PermissionManager.html">PermissionManager</a></li><li><a href="PermissionManagerGuild.html">PermissionManagerGuild</a></li><li><a href="PermissionManagerRole.html">PermissionManagerRole</a></li><li><a href="StaticDatabase.html">StaticDatabase</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:Die">Die</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HASDBCODE">HASDBCODE</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadSync">loadSync</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#saveSync">saveSync</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Nov 05 2020 19:04:55 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Nov 05 2020 19:27:27 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -4,7 +4,7 @@
 class StaticDatabase {
   /**
    * @constructor
-   * @param {PermissionManagerGuild} [db]
+   * @param {PermissionManagerGuild} db
    */
   constructor(db) {
     this.guild = db.guild;

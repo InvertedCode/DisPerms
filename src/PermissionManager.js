@@ -11,12 +11,16 @@ const log = (data) => {if (debug) console.log(data);};
 class PermissionManager {
   /**
    * Initalize a PermissionManager
-   * @param {Discord.Client} [clientapp]
-   * @param {String} [options.dbdir]
-   * @param {Boolean} [options.hasTimeout]
-   * @param {Integer} [options.dbtimeout]
+   * @param {Discord.Client} clientapp The Discord.js client object
+   * @param {Object} [options] A little group of settings
+   * @param {String} [options.dbdir] The directory where databases are stored
+   * @param {Boolean} [options.hasTimeout] IF the database has a timeout
+   * @param {Integer} [options.dbtimeout] the timeout used if hasTimeout is true
    */
   constructor(clientapp, options = {}) {
+    /**
+     * @type {Discord.Client}
+     */
     this._client = clientapp;
 
     /**
@@ -25,6 +29,10 @@ class PermissionManager {
      */  
     this.databasePath = options.dbdir ?? './pdatabase/';
 
+    /**
+     * The databases that are loaded into memory
+     * @type {Object}
+     */
     this.databases = {};
 
     /**
@@ -37,14 +45,14 @@ class PermissionManager {
      * The timeout for the databases
      * @type {Integer}
      */
-
     this.databasetimeout = options.dbtimeout ?? 100000;
+    
     if (!fs.existsSync(this.databasePath)) fs.mkdirSync(this.databasePath);
   }
 
   /**
    * Loads a {@link PermissionManagerGuild} into memory
-   * @param {Discord.Guild} [guild]
+   * @param {Discord.Guild} guild
    * @returns {PermissionManagerGuild}
    */
   loadDatabaseSync(guild) {
@@ -64,7 +72,7 @@ class PermissionManager {
 
   /**
    * Unloads a {@link PermissionManagerGuild} from memory and saves it to a file
-   * @param {Discord.Guild} [guild]
+   * @param {Discord.Guild} guild
    */
   unloadDatabase(guild) {
     if (!this.databases[guild.id]) throw DatabaseNotLoadedError;
@@ -73,9 +81,9 @@ class PermissionManager {
   }
 
   /**
-   * Checks if the manager has a database loaded into memory
-   * @param {Discord.Guild} [guild]
-   * @returns {Boolean}
+   * Checks if the manager has a database
+   * @param {Discord.Guild} guild
+   * @returns {Enum.HASDBCODE}
    */
   hasDatabase(guild) {
     if (this.databases[guild.id]) return Enum.HASDBCODE.DB_ACTIVE;
@@ -85,7 +93,7 @@ class PermissionManager {
 
   /**
    * Gets a database from memory
-   * @param {Discord.Guild} [guild]
+   * @param {Discord.Guild} guild
    * @returns {Boolean}
    */
   getDatabase(guild) {
@@ -94,6 +102,7 @@ class PermissionManager {
 
   /**
    * Initalizes a database file. Might want to be careful with this
+   * @param {Discord.Guild} guild
    */
   initDatabase(guild) {
     this.databases[guild.id] = new PermissionManagerGuild(guild, this.databasetimeout);
@@ -111,7 +120,11 @@ class PermissionManager {
 
   //async stuffs
   
-
+  /**
+   * Loads a database asyncronusly
+   * @param {Discord.Guild} guild
+   * @returns Promise<PermissionManagerGuild>
+   */
   loadDatabase(guild) {
     return new Promise((resolve, reject) => {
       if (this.databases[guild.id]) {

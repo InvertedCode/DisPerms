@@ -7,8 +7,8 @@ const fs = require('fs');
 /**
  * Save a permission database to a local file
  * @function saveSync
- * @param {PermissionManagerGuild} [db]
- * @param {String} [file]
+ * @param {PermissionManagerGuild} db
+ * @param {String} file
  */
 function saveSync(db, file) {
   fs.writeFileSync(file, db.toJSON(), (err) => {
@@ -19,8 +19,8 @@ function saveSync(db, file) {
 /**
  * Saves a permission database asyncronusly
  * @function save
- * @param {PermissionManagerGuild} [db]
- * @param {String} [file]
+ * @param {PermissionManagerGuild} db
+ * @param {String} file
  * @returns {Promise}
  */
 function save(db, file) {
@@ -33,7 +33,7 @@ function save(db, file) {
 /**
  * Load a permission database from a local file
  * @function loadSync
- * @param {string} [file]
+ * @param {string} file
  * @returns {PermissionManagerGuild}
  */
 function loadSync(file) {
@@ -54,7 +54,7 @@ function loadSync(file) {
 /**
  * Load a permission database asyncronusly
  * @function load
- * @param {String} [file]
+ * @param {String} file
  * @returns {Promise<PermissionManagerGuild>}
  */
 function load(file) {

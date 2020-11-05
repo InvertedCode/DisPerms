@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 class PermissionManagerRole {
   /**
    * @constructor
-   * @param {Discord.Role} [role=null]
+   * @param {Discord.Role} role
    */
   constructor(role = null) {
     if (role) {
@@ -26,8 +26,8 @@ class PermissionManagerRole {
   }
   /**
    * Set a permission
-   * @param {String} [permission] 
-   * @param {Boolean} [value]
+   * @param {String} permission 
+   * @param {Boolean} value
    */
   setPerm(permission, value) {
     this.perms[permission] = value;
