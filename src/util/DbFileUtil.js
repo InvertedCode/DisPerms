@@ -6,7 +6,7 @@ const fs = require('fs');
 
 /**
  * Save a permission database to a local file
- * @param {PermissionManager} [db]
+ * @param {PermissionManagerGuild} [db]
  * @param {String} [file]
  */
 function save(db, file) {
@@ -18,7 +18,7 @@ function save(db, file) {
 /**
  * Load a permission database from a local file
  * @param {string} [file]
- * @returns {PermissionManager}
+ * @returns {PermissionManagerGuild}
  */
 function load(file) {
   db = new PermissionManagerGuild(null);

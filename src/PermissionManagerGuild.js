@@ -9,7 +9,9 @@ const wait = util.promisify(setTimeout);
  */
 class PermissionManagerGuild {
   /**
+   * @constructor
    * @param {Discord.Guild} [guild]
+   * @param {Integer} [timeout]0
    */
   constructor(guild, timeout = null) {
     if (guild) {
@@ -47,15 +49,32 @@ class PermissionManagerGuild {
         this._startTimeout();
       }
 
+      /**
+       * Only sends the Die signal to it's {@link PermissionManager}
+       * @type {EventEmitter}
+       */
       this.signals = new EventEmitter();
     }
   }
+
+  /**
+   * Sets the timeout for the database
+   * @param {Integer} [timeout]
+   */
   setTimeout(timeout) {
     this.timeout = timeout;
   }
+
+  /**
+   * Starts the database timeout
+   */
   _startTimeout() {
     if (dies) this.timeoutTimer = setTimeout(this.die, this.timeout);
   }
+
+  /**
+   * Resets the database timeout
+   */
   _resetTimeout() {
     if (dies) {
       clearTimeout(this.timeoutTimer);
@@ -94,6 +113,10 @@ class PermissionManagerGuild {
     return member._roles.some(r=> this.perms[perm].includes(r));
   }
 
+  /**
+   * Die
+   * @private
+   */
   die() {
     this.signals.emit('die');
   }

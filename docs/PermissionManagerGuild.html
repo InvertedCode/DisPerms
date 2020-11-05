@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>PermissionManagerGuild<span class="signature">(guild<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>PermissionManagerGuild<span class="signature">(guild<span class="signature-attributes">opt</span>, timeout<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="PermissionManagerGuild"><span class="type-signature"></span>new PermissionManagerGuild<span class="signature">(guild<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="PermissionManagerGuild"><span class="type-signature"></span>new PermissionManagerGuild<span class="signature">(guild<span class="signature-attributes">opt</span>, timeout<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -72,6 +72,8 @@
         <th>Attributes</th>
         
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -107,6 +109,49 @@
                 </td>
             
 
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -254,7 +299,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line32">line 32</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -326,7 +371,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line20">line 20</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -388,7 +433,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line37">line 37</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -460,7 +505,79 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line26">line 26</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="signals"><span class="type-signature"></span>signals<span class="type-signature"> :EventEmitter</span></h4>
+
+
+
+
+<div class="description">
+    Only sends the Die signal to it's <a href="PermissionManager.html">PermissionManager</a>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">EventEmitter</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -481,6 +598,182 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="_resetTimeout"><span class="type-signature"></span>_resetTimeout<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Resets the database timeout
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="_startTimeout"><span class="type-signature"></span>_startTimeout<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Starts the database timeout
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
             
@@ -634,7 +927,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line92">line 92</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -889,7 +1182,156 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line71">line 71</a>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setTimeout"><span class="type-signature"></span>setTimeout<span class="signature">(timeout<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets the timeout for the database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="PermissionManagerGuild.js.html">PermissionManagerGuild.js</a>, <a href="PermissionManagerGuild.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -941,7 +1383,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Nov 01 2020 18:54:11 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Nov 05 2020 14:01:20 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

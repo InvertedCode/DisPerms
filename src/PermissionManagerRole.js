@@ -5,11 +5,13 @@ const Discord = require('discord.js');
  */
 class PermissionManagerRole {
   /**
+   * @constructor
    * @param {Discord.Role} [role=null]
    */
   constructor(role = null) {
     if (role) {
       /**
+       * The role ID
        * @public
        * @type {String}
        */
