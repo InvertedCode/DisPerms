@@ -4,3 +4,4 @@ src/DefPermManager
 bin/*
 pdatabase/*
 repl/*
+docs/*

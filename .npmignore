@@ -5,3 +5,4 @@ bin/*
 pdatabase/*
 .github/*
 repl/*
+docs/*
