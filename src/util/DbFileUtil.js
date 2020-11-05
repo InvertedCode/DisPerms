@@ -9,10 +9,17 @@ const fs = require('fs');
  * @param {PermissionManagerGuild} [db]
  * @param {String} [file]
  */
-function save(db, file) {
-  fs.writeFileSync(file, JSON.stringify(db), (err) => {
+function saveSync(db, file) {
+  fs.writeFileSync(file, db.toJSON(), (err) => {
     console.log(`saved permission database for guild ${db.guild}`);
   });
+}
+
+function save(db, file) {
+  return new Promise((resolve, reject) => {fs.writeFileSync(file, db.toJSON(), (err) => {
+    console.log(`saved permission database for guild ${db.guild}`);
+    resolve();
+  })});
 }
 
 /**
@@ -20,7 +27,7 @@ function save(db, file) {
  * @param {string} [file]
  * @returns {PermissionManagerGuild}
  */
-function load(file) {
+function loadSync(file) {
   db = new PermissionManagerGuild(null);
   dbbuffer = fs.readFileSync(file);
   dbdata = JSON.parse(dbbuffer);
@@ -35,4 +42,20 @@ function load(file) {
   return db;
 }
 
-module.exports = {save, load}
+function load(file) {
+  return new Promise((resolve, reject) => {
+    db = new PermissionManagerGuild(null);
+    dbbuffer = fs.readFileSync(file);
+    dbdata = JSON.parse(dbbuffer);
+    db.guild = dbdata.guild;
+    db.roles = {};
+    db.friendlyRoleIndex = [];
+    for (i in dbdata.roles) {
+      db.roles[i] = function(a){let b=new PermissionManagerRole();b.id=a.id;b.priority=a.priority;b.perms=a.perms;return b;}(dbdata.roles[i]); //minification go brr.
+      db.friendlyRoleIndex[dbdata.roles[i].priority] = i;
+    }
+    db.perms = dbdata.perms;
+    resolve(db);
+  });
+}
+module.exports = {save, saveSync, load, loadSync}

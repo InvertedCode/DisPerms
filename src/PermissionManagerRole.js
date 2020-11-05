@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-
 /**
  * The role object used in the permission manager
  */

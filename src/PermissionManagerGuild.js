@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const PermissionManagerRole = require('./PermissionManagerRole');
+const EventEmitter = require('events')
 const util = require('util');
+const StaticDb = require('./StaticDatabase');
 
 const wait = util.promisify(setTimeout);
-
 /**
  * 
  */
@@ -49,12 +50,13 @@ class PermissionManagerGuild {
         this._startTimeout();
       }
 
-      /**
-       * Only sends the Die signal to it's {@link PermissionManager}
-       * @type {EventEmitter}
-       */
-      this.signals = new EventEmitter();
+      
     }
+    /**
+     * Only sends the Die signal to it's {@link PermissionManager}
+     * @type {EventEmitter}
+     */
+    this.signals = new EventEmitter();
   }
 
   /**
@@ -69,14 +71,14 @@ class PermissionManagerGuild {
    * Starts the database timeout
    */
   _startTimeout() {
-    if (dies) this.timeoutTimer = setTimeout(this.die, this.timeout);
+    if (this.dies) this.timeoutTimer = setTimeout(this.die, this.timeout);
   }
 
   /**
    * Resets the database timeout
    */
   _resetTimeout() {
-    if (dies) {
+    if (this.dies) {
       clearTimeout(this.timeoutTimer);
       this._startTimeout();
     }
@@ -112,13 +114,20 @@ class PermissionManagerGuild {
     this._resetTimeout();
     return member._roles.some(r=> this.perms[perm].includes(r));
   }
-
+  
   /**
    * Die
    * @private
    */
   die() {
     this.signals.emit('die');
+  }
+
+  toJSON() {
+    let a = new StaticDb(this);
+    let b = JSON.stringify(a);
+    a = null;
+    return b;
   }
 }
 

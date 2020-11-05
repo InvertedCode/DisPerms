@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: PermissionManagerRole.js</title>
+    <title>JSDoc: Source: StaticDatabase.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: PermissionManagerRole.js</h1>
+    <h1 class="page-title">Source: StaticDatabase.js</h1>
 
     
 
@@ -26,44 +26,35 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Discord = require('discord.js');
-/**
- * The role object used in the permission manager
+            <pre class="prettyprint source linenums"><code>/**
+ * A static {@link PermissionManagerGuild} used for saving it.
  */
-class PermissionManagerRole {
+class StaticDatabase {
   /**
    * @constructor
-   * @param {Discord.Role} [role=null]
+   * @param {PermissionManagerGuild} [db]
    */
-  constructor(role = null) {
-    if (role) {
-      /**
-       * The role ID
-       * @public
-       * @type {String}
-       */
-      this.id = role.id;
-      this.priority = role.position;
-      /**
-       * Some permissions
-       * @public
-       * @type {String[]}
-       */
-      this.perms = {};
-    }
-  }
-  /**
-   * Set a permission
-   * @param {String} [permission] 
-   * @param {Boolean} [value]
-   */
-  setPerm(permission, value) {
-    this.perms[permission] = value;
+  constructor(db) {
+    this.guild = db.guild;
+    /**
+     * A collection of roles
+     * @type {Map&lt;String, PermissionManagerRole>}
+     */
+    this.roles = db.roles;
+    /**
+     * A little list of role ID's in order by position in the guild settings
+     * @type {String[]}
+     */
+    this.friendlyRoleIndex = db.friendlyRoleIndex;
+
+    /**
+     * The permissions and roles that have them
+     */
+    this.perms = db.perms;
   }
 }
 
-module.exports = PermissionManagerRole;
-</code></pre>
+module.exports = StaticDatabase</code></pre>
         </article>
     </section>
 

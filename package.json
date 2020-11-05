@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node ./test/test.js",
     "repltest": "./bin/node ./test/test.js",
-    "ghtest": "node ./test/ghtest.js"
+    "ghtest": "node ./test/ghtest.js",
+    "valuestest": "./bin/node ./test/valuestest.js"
   },
   "repository": {
     "type": "git",

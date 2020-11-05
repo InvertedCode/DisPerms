@@ -3,6 +3,7 @@ const PermissionManagerGuild = require('./PermissionManagerGuild.js');
 const PermissionManagerRole  = require('./PermissionManagerRole.js');
 const dbsl = require('./util/DbFileUtil.js');
 const {DatabaseAlreadyLoadedError} = require('./util/errors');
+const Enum = require('./enum/enum-index.js');
 const fs = require('fs');
 const debug = true;
 const log = (data) => {if (debug) console.log(data);};
@@ -16,7 +17,6 @@ class PermissionManager {
    * @param {Integer} [options.dbtimeout]
    */
   constructor(clientapp, options = {}) {
-    
     this._client = clientapp;
 
     /**
@@ -47,11 +47,11 @@ class PermissionManager {
    * @param {Discord.Guild} [guild]
    * @returns {PermissionManagerGuild}
    */
-  loadDatabase(guild) {
+  loadDatabaseSync(guild) {
     if (this.databases[guild.id]) {
       throw DatabaseAlreadyLoadedError;
     }
-    this.databases[guild.id] = dbsl.load(this.databasePath + guild.id);
+    this.databases[guild.id] = dbsl.loadSync(this.databasePath + guild.id);
     this.databases[guild.id].dies = false;
     if (this.databasesDie) {
       this.databases[guild.id].dies = true;
@@ -78,7 +78,9 @@ class PermissionManager {
    * @returns {Boolean}
    */
   hasDatabase(guild) {
-    return (this.databases[guild.id]);
+    if (this.databases[guild.id]) return Enum.HASDBCODE.DB_ACTIVE;
+    else if (fs.existsSync(this.databasePath + guild.id)) return Enum.HASDBCODE.DB_EXISTS;
+    else return Enum.HASDBCODE.DB_NODB;
   }
 
   /**
@@ -101,9 +103,35 @@ class PermissionManager {
 
   _hookToDie(a) {
     a.signals.on('die', () => {
+      console.log(`database ${a.guild} timed out`)
       dbsl.save(a, a.guild);
       delete this.databases[a.guild];
     })
+  }
+
+  //async stuffs
+  
+
+  loadDatabase(guild) {
+    return new Promise((resolve, reject) => {
+      if (this.databases[guild.id]) {
+        reject("already loaded");
+      }
+      dbsl.load(this.databasePath + guild.id)
+        .then((result => {result.dies = false;
+          if (this.databasesDie) {
+            result.dies = true;
+            result.setTimeout(this.databasetimeout);
+          }
+          return result
+        }))
+        .then(result => {
+          this._hookToDie(result);
+            result._startTimeout();
+          this.databases[guild.id] = result;
+          resolve(result);
+        });
+    });
   }
 }
 
